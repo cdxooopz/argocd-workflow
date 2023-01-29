@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nodejs-tutorialspoint
+  labels:
+    app: nodejs-tutorialspoint
+data:
+  ENV: "dev"

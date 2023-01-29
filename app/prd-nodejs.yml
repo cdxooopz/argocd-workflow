@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prd-nodejs 
+  namespace: argocd 
+  labels:
+    name: prd-nodejs
+spec:
+  destination:
+    namespace: application-prod 
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: config/prd-nodejs
+    repoURL: 'https://github.com/cdxooopz/argocd-workflow.git' 
+    targetRevision: HEAD 
+    directory:
+      recurse: true 
+  project: default
+  syncPolicy:
+    automated:
+      prune: true 
+      selfHeal: true 

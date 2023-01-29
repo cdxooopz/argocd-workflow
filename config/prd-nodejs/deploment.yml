@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-tutorialspoint
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs-tutorialspoint
+  template:
+    metadata:
+      labels:
+        app: nodejs-tutorialspoint
+    spec:
+      containers:
+      - name: nodejs-tutorialspoint
+        image: 997305327977.dkr.ecr.ap-southeast-1.amazonaws.com/nodejs-tutorials:latest
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+          - name: http
+            containerPort: 8081
+            protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: http
+        envFrom:
+          - configMapRef: 
+              name: nodejs-tutorialspoint
