@@ -10,7 +10,7 @@ metadata:
 spec: 
   ingressClassName: alb
   rules:
-  - host: dev-kamin.io
+  - host: dev.kamin.io
     http:
       paths:
         - path: /
