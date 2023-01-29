@@ -4,9 +4,9 @@ metadata:
   name: nodejs-tutorialspoint
 spec:
   ports:
-  - port: 80
-    targetPort: http
-    protocol: TCP
-    name: http
-selector:
-  app: nodejs-tutorialspoint
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: nodejs-tutorialspoint
