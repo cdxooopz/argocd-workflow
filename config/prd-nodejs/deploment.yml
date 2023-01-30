@@ -13,6 +13,11 @@ spec:
         app: nodejs-tutorialspoint
     spec:
       containers:
+      - args:
+            - --cluster-name=eks-tutorials-example
+            - --ingress-class=alb
+            - --aws-vpc-id=vpc-0219fc6eed26379b7
+            - --aws-region=ap-southeast-1
       - name: nodejs-tutorialspoint
         image: 997305327977.dkr.ecr.ap-southeast-1.amazonaws.com/nodejs-tutorials:latest
         resources:
