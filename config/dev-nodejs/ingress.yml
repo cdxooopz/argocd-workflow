@@ -1,10 +1,3 @@
-apiVersion: elbv2.k8s.aws/v1beta1
-kind: IngressClassParams
-metadata:
-  labels:
-    app.kubernetes.io/name: aws-load-balancer-controller
-  name: alb
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -14,6 +7,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: "subnet-0bcb829f559da4b03, subnet-019bcffd4c8e09f25"
 spec: 
   ingressClassName: alb
   rules:
