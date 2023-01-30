@@ -2,16 +2,14 @@ apiVersion: elbv2.k8s.aws/v1beta1
 kind: IngressClassParams
 metadata:
   labels:
-    # app.kubernetes.io/name: aws-load-balancer-controller
-    app: nodejs-tutorialspoint
+    app.kubernetes.io/name: aws-load-balancer-controller
   name: alb
 ---
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
   labels:
-    # app.kubernetes.io/name: aws-load-balancer-controller
-    app: nodejs-tutorialspoint
+    app.kubernetes.io/name: aws-load-balancer-controller
   name: alb
 spec:
   controller: ingress.k8s.aws/alb
@@ -19,15 +17,3 @@ spec:
     apiGroup: elbv2.k8s.aws
     kind: IngressClassParams
     name: alb
-  ingressClassName: alb
-  rules:
-  - host: dev.kamin.io
-    http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: nodejs-tutorialspoint
-              port:
-                number: 80
